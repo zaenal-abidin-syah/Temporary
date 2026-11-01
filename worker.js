@@ -1,8 +1,4 @@
 // Ubah daftar ini sesuai API yang mau kamu lewati
-const ALLOWED_HOSTS = [
-  "jsonplaceholder.typicode.com",
-  "api.contoh.com",
-];
 
 const STRIP_REQ = [
   "host", "cf-connecting-ip", "cf-ray", "cf-ipcountry",
@@ -42,9 +38,6 @@ export default {
 
     if (!["http:", "https:"].includes(upstream.protocol)) {
       return json({ error: "protokol ditolak" }, 400);
-    }
-    if (!ALLOWED_HOSTS.includes(upstream.hostname)) {
-      return json({ error: "host tidak diizinkan" }, 403);
     }
 
     const len = Number(request.headers.get("content-length") || 0);
